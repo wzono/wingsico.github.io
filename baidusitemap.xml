@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://wingsico.github.io/2017/08/04/vue-cli-1/</loc>
+    <loc>https://wingsico.github.io/2020/12/07/202011-summary/</loc>
     <lastmod>2020-12-07</lastmod>
   </url>
   <url>
     <loc>https://wingsico.github.io/2018/01/05/vue-cli-whitepage/</loc>
+    <lastmod>2020-12-07</lastmod>
+  </url>
+  <url>
+    <loc>https://wingsico.github.io/2017/08/04/vue-cli-1/</loc>
     <lastmod>2020-12-07</lastmod>
   </url>
   <url>
@@ -25,11 +29,11 @@
     <lastmod>2020-12-07</lastmod>
   </url>
   <url>
-    <loc>https://wingsico.github.io/2017/10/15/vscode/</loc>
+    <loc>https://wingsico.github.io/2017/12/23/vue-build-kengs/</loc>
     <lastmod>2020-12-07</lastmod>
   </url>
   <url>
-    <loc>https://wingsico.github.io/2017/12/23/vue-build-kengs/</loc>
+    <loc>https://wingsico.github.io/2017/10/15/vscode/</loc>
     <lastmod>2020-12-07</lastmod>
   </url>
   <url>
@@ -37,15 +41,11 @@
     <lastmod>2020-12-07</lastmod>
   </url>
   <url>
-    <loc>https://wingsico.github.io/2017/11/10/squence-link/</loc>
-    <lastmod>2020-12-07</lastmod>
-  </url>
-  <url>
     <loc>https://wingsico.github.io/2017/12/16/ssh-host/</loc>
     <lastmod>2020-12-07</lastmod>
   </url>
   <url>
-    <loc>https://wingsico.github.io/2017/10/08/shadowsocks/</loc>
+    <loc>https://wingsico.github.io/2017/11/10/squence-link/</loc>
     <lastmod>2020-12-07</lastmod>
   </url>
   <url>
@@ -53,11 +53,11 @@
     <lastmod>2020-12-07</lastmod>
   </url>
   <url>
-    <loc>https://wingsico.github.io/2017/12/16/pattern-match/</loc>
+    <loc>https://wingsico.github.io/2017/10/08/shadowsocks/</loc>
     <lastmod>2020-12-07</lastmod>
   </url>
   <url>
-    <loc>https://wingsico.github.io/2017/11/12/node-checkin/</loc>
+    <loc>https://wingsico.github.io/2017/12/16/pattern-match/</loc>
     <lastmod>2020-12-07</lastmod>
   </url>
   <url>
@@ -65,11 +65,11 @@
     <lastmod>2020-12-07</lastmod>
   </url>
   <url>
-    <loc>https://wingsico.github.io/2017/10/21/npm-publish/</loc>
+    <loc>https://wingsico.github.io/2017/11/12/node-checkin/</loc>
     <lastmod>2020-12-07</lastmod>
   </url>
   <url>
-    <loc>https://wingsico.github.io/2020/04/01/js-spec-types/</loc>
+    <loc>https://wingsico.github.io/2017/10/21/npm-publish/</loc>
     <lastmod>2020-12-07</lastmod>
   </url>
   <url>
@@ -77,11 +77,15 @@
     <lastmod>2020-12-07</lastmod>
   </url>
   <url>
-    <loc>https://wingsico.github.io/2017/12/23/mobile-adaptation/</loc>
+    <loc>https://wingsico.github.io/2020/04/01/js-spec-types/</loc>
     <lastmod>2020-12-07</lastmod>
   </url>
   <url>
     <loc>https://wingsico.github.io/2018/03/27/mysql-password-reset/</loc>
+    <lastmod>2020-12-07</lastmod>
+  </url>
+  <url>
+    <loc>https://wingsico.github.io/2017/12/23/mobile-adaptation/</loc>
     <lastmod>2020-12-07</lastmod>
   </url>
   <url>
