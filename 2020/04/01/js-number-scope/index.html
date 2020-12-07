@@ -1,0 +1,68 @@
+<!DOCTYPE html><html lang="en"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="wingsico的编程世界"><title>JavaScript 中 Number 有多少个? | wingsico</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.1"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/normalize.css/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/pure-min.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/clipboard/dist/clipboard.min.js"></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.js"></script><link rel="stylesheet" href="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.css"><!-- hexo injector head_end start -->
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.2.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">JavaScript 中 Number 有多少个?</h1><a id="logo" href="/.">wingsico</a><p class="description">真正的大师，永远都怀着一颗学徒的心</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> Home</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/tags/"><i class="fa fa-tag"> Tags</i></a><a href="/about/"><i class="fa fa-user"> About</i></a><a href="/comments/"><i class="fa fa-comments"> 留言</i></a><a href="/atom.xml"><i class="fa fa-rss"> RSS</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">JavaScript 中 Number 有多少个?</h1><div class="post-meta">04-01-2020<span> | </span><span class="category"><a href="/categories/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3/">深入理解</a></span><script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script><span id="busuanzi_container_page_pv"> | <span id="busuanzi_value_page_pv"></span><span> Hits</span></span><span class="post-time"><span class="post-meta-item-text"> | </span><span class="post-meta-item-icon"><i class="fa fa-keyboard-o"></i><span class="post-count"> 1.2k</span><span class="post-meta-item-text"> Words</span></span></span><span class="post-time"> | <span class="post-meta-item-icon"><i class="fa fa-clock-o"></i><span class="post-count"> 4</span><span class="post-meta-item-text"> Minutes</span></span></span></div><a class="disqus-comment-count" href="/2020/04/01/js-number-scope/#vcomment"><span class="valine-comment-count" data-xid="/2020/04/01/js-number-scope/"></span><span> Comment</span></a><div class="clear"><div class="toc-article" id="toc"><div class="toc-title">Contents</div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#JavaScript%E4%B8%AD%E7%9A%84Number"><span class="toc-number">1.</span> <span class="toc-text">JavaScript中的Number</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%87%8A"><span class="toc-number">2.</span> <span class="toc-text">解释</span></a></li></ol></div></div><div class="post-content"><p>JavaScript 中 Number 到底有多少个？为了弄清这个问题，并且了解 JavaScript 的 Number 类型设计，将从规范上进行探究。</p>
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><p>这个问题的来源是 winter 老师的 <strong>#重学前端#</strong> 课程，在讲解 Number 类型时提到这样一句话：</p>
+<blockquote>
+<p>JavaScript 中的 Number 类型有 18437736874454810627(即 2^64 - 2^53 + 3) 个值。</p>
+</blockquote>
+<p>对于这个 <code>2^64 - 2^53 + 3</code>，winter老师并没有给出相关的解释，为了弄清楚这个的来源去查阅相关资料后进行整理。</p>
+<p>为了知道这个问题的答案，需要先了解一下在JavaScript中Number是如何表示的。</p>
+<h2 id="JavaScript中的Number"><a href="#JavaScript中的Number" class="headerlink" title="JavaScript中的Number"></a>JavaScript中的Number</h2><p>从ECMAScript规范中得知, Number的值是：</p>
+<blockquote>
+<p>primitive value corresponding to a double-precision 64-bit binary format IEEE 754-2008 value</p>
+</blockquote>
+<p>意思就是：符合IEEE 754-2008 格式的 64 位双精度二进制的原始值。</p>
+<p>在 IEEE 754 中，64位双精度浮点数中的64位由以下部分组成：</p>
+<p><img src="http://cdn.wingsico.org/blog/js%20number.png" alt="64位双精度浮点数"></p>
+<ul>
+<li>s - 符号位，占 1 bit (数符)</li>
+<li>e - 指数位，占 11 bit (阶码=阶码真值+偏移量)</li>
+<li>f - 小数位，占 52 bit (尾数)</li>
+</ul>
+<p>在规范中也明确的给出了各种情况的计算方式：</p>
+<p><img src="http://cdn.wingsico.org/blog/IEEE-64double.png" alt="IEEE 754计算"></p>
+<ol>
+<li><p>如果指数位e全为1，即 e = 11111111111，也就是十进制的2047(2^11-1)，且小数位f不为0，就超过了最大值，这样的数字无法正确表示，表示为 NaN(Not a Number)，此时会无视作为符号位的s</p>
+</li>
+<li><p>如果指数为e全为1，但小数位f为0的话，则根据符号位s得到两个特殊的值((-1)^s)，当s为0时，得到正无穷大，对于JS中的Infinity;当s为1时，得到负无穷大，对应-Infinity</p>
+</li>
+<li><p>如果指数e在 0&lt;e&lt;2^11-1 之间，这个表示 IEEE 认为的正常的浮点数区间，那么对应的数字的计算公式为：(-1)<sup>s</sup>x(2<sup>e-1023</sup>)x(1.f)<br> 对于e-1023和1.f可能会有些疑惑。其中 1023 代表指数的偏移量，那么为什么会有这个偏移量呢，首先，作为11位的阶码，如果是无符号，那么表示的范围为 <code>[0-2047]</code>, 当处于我们第三种情况时，e的范围要去掉0和2047，变成 <code>[1,2046]</code>，如果要表示正负，则需要使用一个bit去作为符号位，范围为 <code>[-1022, 1023]</code>，如果没有偏移量，那么需要引入补码，计算更加复杂，为了简化运算，则使用无符号的阶码，引入了偏移量的概念，通过偏移将其转换成 <code>[1,2046]</code>，所以偏移量为 1023。<br> 那么对于1.f来说，因为对于浮点数，在规范中采用科学计数法的方法，对于十进制12.34来说，用科学技术法表示为 1.234x10^2，不会表示为 0.1234x10^3，其首位肯定是一个不为0的数字，那么在二进制中，只有0和1，那么他的首位就只能是1（用科学计数法表示，首位不能为0）。因为对于所有的浮点数他的首位都是1，因此可以省略一位进行，不需要额外占用1位，所以f实际上的有效位数有53位（其中首位是1）。在计算时需要使用上这个隐含的1。这也是1.f的由来</p>
+</li>
+<li><p>当e为0且f不为0时，是非规范化的数字，用于表示那些非常接近0的数字。</p>
+<blockquote>
+<p>非规格化下，指数为，000 00000000 - 011 11111111 (偏移量) = - 100 00000001（转成10进制，减1取反）= - 1023<br>从指数看，得知最小值是2^-1023，然而如果尾数是0.00000000 00000000 00000000 00000000 00000000 00000000 0001 不为0的情况，52位尾数相当于小数点还能虚拟化的向右移动51，可以取得更小的 2^-51, 所以最小值为 <code>2^-1074 = Math.pow(2,-1074)</code> 约等于 5e-324<br>而JS最小值常量Number.MIN_VALUE正是5e-324<br>所以(-5e-324,5e-324)之间的数比可表示的最小数还要小，显示成0，叫反向溢出。</p>
+</blockquote>
+</li>
+<li><p>如果指数是0且尾数也是0，则表示正负0的情况</p>
+</li>
+</ol>
+<h2 id="解释"><a href="#解释" class="headerlink" title="解释"></a>解释</h2><p>从上面的分类我们得知，前两种是非正常的值，第一种含有 2^52 种情况（尾数有52位），第二种含有两种情况（正无穷和负无穷），那么根据排列组合，共有 2*1*2^52 = 2^53 种情况。这些非正常的值在JS中以 NaN、+Infinity、-Infinity表示，因此在Number中多了三种情况。那么总数就是 <code>2^64-2^53+3</code>，算得有 18437736874454810627 个值。</p>
+<p>其中也可以解释为什么 <code>NaN != NaN</code>，因为 NaN 代表了 2^52 种情况，不是一个固定的值，而是一批值，自然也不会等于自身了。</p>
+</div><div class="tags"><a href="/tags/javascript/"><i class="fa fa-tag"></i>javascript</a><a href="/tags/%E8%A7%84%E8%8C%83/"><i class="fa fa-tag"></i>规范</a></div><div class="post-nav"><a class="pre" href="/2020/04/04/catch-me-if-you-can/">《猫鼠游戏》有感</a><a class="next" href="/2020/04/01/unicode-intro/">Unicode 简介</a></div><div id="vcomment"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script><script>var notify = 'true' == 'true' ? true : false;
+var verify = 'false' == 'true' ? true : false;
+var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick,mail'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+window.valine = new Valine({
+  el:'#vcomment',
+  notify:notify,
+  verify:verify,
+  appId:'yd3glld8hGV5qBsgdj1wd0PN-gzGzoHsz',
+  appKey:'6QgBEkctVPSnQKMI7G1n2EO2',
+  placeholder:'if you have some questions, please comment',
+  avatar:'mm',
+  guest_info:guest_info,
+  pageSize:'10'
+})
+</script></div></div></div><div class="pure-u-1 pure-u-md-1-4"><div id="sidebar"><div class="widget"><div class="search-form"><input id="local-search-input" placeholder="Search" type="text" name="q" results="0"/><div id="local-search-result"></div></div></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> Categories</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%93%E6%B2%BB%E6%87%92%E7%99%8C/">专治懒癌</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%9D%82%E6%96%87/">技术杂文</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3/">深入理解</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87/">疑难杂症</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9A%8F%E7%AC%94/">随笔</a><span class="category-list-count">21</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> Recent</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/06/24/some-of-leave/">临别有感</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/04/catch-me-if-you-can/">《猫鼠游戏》有感</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/01/js-number-scope/">JavaScript 中 Number 有多少个?</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/01/unicode-intro/">Unicode 简介</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/01/js-spec-types/">JavaScript 规范类型</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/12/byteDance-intervies/">2019.6月 头条前端三面 面经</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/11/2019-plan-1/">2019年-2020年目标规划</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/27/mysql-password-reset/">Mac OS 重置MySQL密码</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/16/vue-router-404/">vue-router 非定义路由的访问</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/15/functional-programming-1/">函数式编程之curry</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> Links</i></div><ul></ul><a href="https://www.lxxyx.cn/" title="繁易的前端乐园" target="_blank">繁易的前端乐园</a><ul></ul><a href="https://www.xiaohuochai.cc/" title="小火柴的前端小站" target="_blank">小火柴的前端小站</a><ul></ul><a href="https://www.haomwei.com/" title="屠夫9941" target="_blank">屠夫9941</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2020 <a href="/." rel="nofollow">wingsico.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.1" async></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.1" async></script><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.css"><link rel="stylesheet" type="text/css" href="/css/search.css?v=0.0.1"><script type="text/javascript" src="/js/search.js?v=0.0.1"></script><script>var search_path = '';
+var search_path = 'search.xml';
+if (search_path.length == 0) {
+   search_path = 'search.xml';
+}
+var path = '/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/javascript" src="/js/copycode.js" successtext="Copy Successed!"></script><link rel="stylesheet" type="text/css" href="/css/copycode.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.1"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.1"></script></div><!-- hexo-inject:begin --><!-- hexo-inject:end --></body></html>

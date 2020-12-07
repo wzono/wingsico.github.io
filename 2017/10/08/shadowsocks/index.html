@@ -1,0 +1,83 @@
+<!DOCTYPE html><html lang="en"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="wingsico的编程世界"><title>Chrome + shadowsocks + SwitchyOmega = 科学上网？ | wingsico</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.1"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/normalize.css/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/pure-min.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/clipboard/dist/clipboard.min.js"></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.js"></script><link rel="stylesheet" href="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.css"><!-- hexo injector head_end start -->
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.2.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">Chrome + shadowsocks + SwitchyOmega = 科学上网？</h1><a id="logo" href="/.">wingsico</a><p class="description">真正的大师，永远都怀着一颗学徒的心</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> Home</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/tags/"><i class="fa fa-tag"> Tags</i></a><a href="/about/"><i class="fa fa-user"> About</i></a><a href="/comments/"><i class="fa fa-comments"> 留言</i></a><a href="/atom.xml"><i class="fa fa-rss"> RSS</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">Chrome + shadowsocks + SwitchyOmega = 科学上网？</h1><div class="post-meta">10-08-2017<span> | </span><span class="category"><a href="/categories/%E6%8A%80%E6%9C%AF%E6%9D%82%E6%96%87/">技术杂文</a><a href="/categories/%E4%B8%93%E6%B2%BB%E6%87%92%E7%99%8C/">专治懒癌</a></span><script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script><span id="busuanzi_container_page_pv"> | <span id="busuanzi_value_page_pv"></span><span> Hits</span></span><span class="post-time"><span class="post-meta-item-text"> | </span><span class="post-meta-item-icon"><i class="fa fa-keyboard-o"></i><span class="post-count"> 1.3k</span><span class="post-meta-item-text"> Words</span></span></span><span class="post-time"> | <span class="post-meta-item-icon"><i class="fa fa-clock-o"></i><span class="post-count"> 4</span><span class="post-meta-item-text"> Minutes</span></span></span></div><a class="disqus-comment-count" href="/2017/10/08/shadowsocks/#vcomment"><span class="valine-comment-count" data-xid="/2017/10/08/shadowsocks/"></span><span> Comment</span></a><div class="clear"><div class="toc-article" id="toc"><div class="toc-title">Contents</div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91"><span class="toc-number">1.</span> <span class="toc-text">科学上网</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#VPN"><span class="toc-number">2.</span> <span class="toc-text">VPN</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E5%90%88-VPN-%E5%AE%9E%E7%8E%B0%E5%9B%BD%E5%86%85%E5%A4%96%E5%88%86%E6%B5%81%E8%AE%BF%E9%97%AE"><span class="toc-number">2.1.</span> <span class="toc-text">配合 VPN 实现国内外分流访问</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Shadowsocks"><span class="toc-number">2.2.</span> <span class="toc-text">Shadowsocks</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4"><span class="toc-number">3.</span> <span class="toc-text">步骤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SwitchyOmega"><span class="toc-number">4.</span> <span class="toc-text">SwitchyOmega</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-SwitchyOmega"><span class="toc-number">4.1.</span> <span class="toc-text">使用 SwitchyOmega</span></a></li></ol></li></ol></div></div><div class="post-content"><p>最近不在机房，不能享受自动翻墙的”快感”了，呼幸好手里还有一个 ss 账号，那直接给 ubuntu 来一套科学上网的正确姿势吧～</p>
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><a id="more"></a>
+
+<h2 id="科学上网"><a href="#科学上网" class="headerlink" title="科学上网"></a>科学上网</h2><p>科学上网一词我是听别人说+看到一本书《程序员的自我修养》里面的一章节，里面介绍了什么是墙，如何翻墙，以及 vpn 相关概念。根据我所了解的来说，科学上网的方式共有两种——VPN &amp; Shadowsocks。那么这两个有什么区别呢？</p>
+<h2 id="VPN"><a href="#VPN" class="headerlink" title="VPN"></a>VPN</h2><blockquote>
+<p>在公用网络上建立专用网络，进行加密通讯。原理是在一个国外网络无阻的机器上与本地机器通信。</p>
+<p>优点是方便设置，网络速度稳定。</p>
+<p>缺点是稳定的服务价格不便宜，且本地流量全部走的是代理。</p>
+</blockquote>
+<p>一看到连本地流量走的都是代理，震惊了，本来价格都是按照流量来算的，如果连国内网站都走代理的话，那不是亏成翔。还好目前有解决办法。</p>
+<h3 id="配合-VPN-实现国内外分流访问"><a href="#配合-VPN-实现国内外分流访问" class="headerlink" title="配合 VPN 实现国内外分流访问"></a>配合 VPN 实现国内外分流访问</h3><blockquote>
+<p>“分流”，这个词不知道说的准不准确，意思就是实现对不需要翻墙的网站直接连接，需要翻墙的网站走 VPN 代理。这样国内的网站访问不受影响，又能正常访问国外站点。</p>
+<p>实现方式就是修改系统的路由表，网络上有这样的开源项目，专门收集国内被“墙”的网站。利用这些数据，让 vpn 客户端在进行连接的时候自动执行.</p>
+<p>通过这些路由脚本, 可以让用户在使用 vpn 作为默认网络网关的时候, 不使用 vpn 进行对中国国内 ip 的访问, 从而减轻 vpn 的负担, 和增加访问国内网站的速度.</p>
+</blockquote>
+<p>关于各个系统实现的方式我就不在这里赘述，详情请看这里 <a target="_blank" rel="noopener" href="https://leohxj.gitbooks.io/a-programmer-prepares/effciency/great-fire-wall.html">科学上网</a></p>
+<h3 id="Shadowsocks"><a href="#Shadowsocks" class="headerlink" title="Shadowsocks"></a>Shadowsocks</h3><p>这是另一种科学上网的姿势，我选择他！因为 vpn 的缺点他都没有～这也是我接下来要讲的，如标题一般，那么我们就以 shadowsocks 开始吧。</p>
+<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><p>首先，我们需要下载安装 Shadowsocks，在 linux Ubuntu16.04 中，我们使用 pip 安装。</p>
+<ol>
+<li>安装 pip</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install python-pip</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>安装 shadowsocks</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install shadowsocks</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>使用这里介绍两种使用方法，但推荐第二种方法。 1.无配置文件，一行命令搞定</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sslocal -s server_ip -p server_port -l 1080 -k password -t 600 -m aes-256-cfb</span><br></pre></td></tr></table></figure>
+
+<p>server_ip 请替换成对应的服务 ip， server_port 替换成对应的服务端口号， -l 是本地端口（默认 1080）， -k 后面填写密码（password）需要加双引号(“”) 如密码是 123456，则应写成 <code>-k &quot;123456&quot;</code> ， -t 是默认超时时间， -m 是加密方法，这个会由服务端给出，默认值为 aes-256-cfb。 可以简单的写为：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sslocal -s ip -p port -k <span class="string">&quot;password&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>只使用-s -p -k 这三个参数，其他的使用默认值（注意要与服务端匹配才能省略） 缺点：每次输入命令都要手动填写相关信息，比较麻烦。所以我推荐第二种。 2.添加配置文件，更加简短的命令。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sslocal -c path/to/ss.json</span><br></pre></td></tr></table></figure>
+
+<p>怎么样，是不是更加简短了呢？这里，我们将使用到一个配置文件，这个是由我们自己来创建，不知道放在哪里好，我自己就放在/home 目录下。 方法：选择一个目录，创建一个 json 格式的文件，名字自己定义，打开后，如下填入 ss 的相关信息.</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;server&quot;</span>: <span class="string">&quot;server_ip&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;server_port&quot;</span>: server_port,</span><br><span class="line">  <span class="attr">&quot;local_address&quot;</span>: <span class="string">&quot;127.0.0.1&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;local_port&quot;</span>: <span class="number">1080</span>,</span><br><span class="line">  <span class="attr">&quot;password&quot;</span>: <span class="string">&quot;password&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;timeout&quot;</span>: <span class="number">300</span>,</span><br><span class="line">  <span class="attr">&quot;method&quot;</span>: <span class="string">&quot;aes-256-cfb&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;fast_open&quot;</span>: <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注意：上面打了双引号的在实际使用的时候也需要双引号。保存之后，在命令行里使用上面那条命令就可以启动 ss 了。</p>
+<p>这样就行了吗？还不行呢，使用 Shadowsocks 我们还需要设置一下浏览器端的代理设置。这里仅介绍 chrome 浏览器下的方法。</p>
+<h2 id="SwitchyOmega"><a href="#SwitchyOmega" class="headerlink" title="SwitchyOmega"></a>SwitchyOmega</h2><p>这个是 Chrome 的一个插件，非常好用。之前一直在搜索如何下载 SwitchyOmega ，我靠竟然还有叫人去谷歌商店下载的。。我还没翻墙呢怎么去谷歌商店，坑爹呢这是。想想这么好的东西可能开源了吧，于是就到 github 上去找找，嘿;-)果然被我找到了，放一下下载地址～ <a target="_blank" rel="noopener" href="https://github.com/FelisCatus/SwitchyOmega/releases/">https://github.com/FelisCatus/SwitchyOmega/releases/</a> 下载好了之后打开谷歌浏览器，输入<code>chrome://extensions</code>，将刚刚下载好的拖入就可以安装了。那么安装好了如何使用呢？</p>
+<h3 id="使用-SwitchyOmega"><a href="#使用-SwitchyOmega" class="headerlink" title="使用 SwitchyOmega"></a>使用 SwitchyOmega</h3><p>废话少说，直接上操作：</p>
+<ol>
+<li>新建情景模式</li>
+<li>填写名称（自定义），选择第一个代理服务器，点击创建</li>
+<li>进入刚创建的情景模式，将代理协议选择至 SOCKS5，代理服务器处填写：127.0.0.1，代理端口填写 1080</li>
+<li>保存，并在浏览器右上角选择到刚刚创建的情景模式。</li>
+</ol>
+<p>OK，这时候你就会发现谷歌能上了，youtube 能看了，世界突然变美好了（滑稽）</p>
+</div><div class="tags"><a href="/tags/linux/"><i class="fa fa-tag"></i>linux</a><a href="/tags/vpn/"><i class="fa fa-tag"></i>vpn</a></div><div class="post-nav"><a class="pre" href="/2017/10/09/comb-doctype/">前端知识梳理（四）—— DOCTYPE 深入剖析</a><a class="next" href="/2017/09/29/comb-lang/">前端知识梳理（三）—— lang</a></div><div id="vcomment"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script><script>var notify = 'true' == 'true' ? true : false;
+var verify = 'false' == 'true' ? true : false;
+var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick,mail'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+window.valine = new Valine({
+  el:'#vcomment',
+  notify:notify,
+  verify:verify,
+  appId:'yd3glld8hGV5qBsgdj1wd0PN-gzGzoHsz',
+  appKey:'6QgBEkctVPSnQKMI7G1n2EO2',
+  placeholder:'if you have some questions, please comment',
+  avatar:'mm',
+  guest_info:guest_info,
+  pageSize:'10'
+})
+</script></div></div></div><div class="pure-u-1 pure-u-md-1-4"><div id="sidebar"><div class="widget"><div class="search-form"><input id="local-search-input" placeholder="Search" type="text" name="q" results="0"/><div id="local-search-result"></div></div></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> Categories</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%93%E6%B2%BB%E6%87%92%E7%99%8C/">专治懒癌</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%9D%82%E6%96%87/">技术杂文</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3/">深入理解</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87/">疑难杂症</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9A%8F%E7%AC%94/">随笔</a><span class="category-list-count">21</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> Recent</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/06/24/some-of-leave/">临别有感</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/04/catch-me-if-you-can/">《猫鼠游戏》有感</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/01/js-number-scope/">JavaScript 中 Number 有多少个?</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/01/unicode-intro/">Unicode 简介</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/01/js-spec-types/">JavaScript 规范类型</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/12/byteDance-intervies/">2019.6月 头条前端三面 面经</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/11/2019-plan-1/">2019年-2020年目标规划</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/27/mysql-password-reset/">Mac OS 重置MySQL密码</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/16/vue-router-404/">vue-router 非定义路由的访问</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/15/functional-programming-1/">函数式编程之curry</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> Links</i></div><ul></ul><a href="https://www.lxxyx.cn/" title="繁易的前端乐园" target="_blank">繁易的前端乐园</a><ul></ul><a href="https://www.xiaohuochai.cc/" title="小火柴的前端小站" target="_blank">小火柴的前端小站</a><ul></ul><a href="https://www.haomwei.com/" title="屠夫9941" target="_blank">屠夫9941</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2020 <a href="/." rel="nofollow">wingsico.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.1" async></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.1" async></script><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.css"><link rel="stylesheet" type="text/css" href="/css/search.css?v=0.0.1"><script type="text/javascript" src="/js/search.js?v=0.0.1"></script><script>var search_path = '';
+var search_path = 'search.xml';
+if (search_path.length == 0) {
+   search_path = 'search.xml';
+}
+var path = '/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/javascript" src="/js/copycode.js" successtext="Copy Successed!"></script><link rel="stylesheet" type="text/css" href="/css/copycode.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.1"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.1"></script></div><!-- hexo-inject:begin --><!-- hexo-inject:end --></body></html>
